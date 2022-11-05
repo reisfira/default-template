@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->guest()) {
-            return redirect()->url('login');
+            return redirect()->route('login');
         }
 
         return view('home');

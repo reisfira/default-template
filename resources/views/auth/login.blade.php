@@ -45,7 +45,7 @@
                     </div>
                 </form>
                 <p class="mb-0">
-                    <a href="{{ route('register.view') }}" class="text-center">Register a new membership</a>
+                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
                 </p>
             </div>
 

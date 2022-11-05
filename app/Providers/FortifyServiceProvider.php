@@ -35,6 +35,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // GET: login
+        Fortify::loginView(function () { return view('auth.login'); });
+
         // POST: login
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
@@ -43,9 +46,13 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+        // GET: register
+        Fortify::registerView(function () { return view('auth.register'); });
+
         // POST: register
         Fortify::createUsersUsing(CreateNewUser::class);
 
+        // default configurations
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);

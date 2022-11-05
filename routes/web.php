@@ -16,11 +16,6 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::view('welcome', 'welcome')->name('welcome');
-
-// authentication custom views for fortify authentication
-Route::view('login', 'auth.login')->name('login.view');
-Route::view('register', 'auth.register')->name('register.view');
-
 Route::get('/', [ HomeController::class, 'index' ])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [ HomeController::class, 'index' ]);
