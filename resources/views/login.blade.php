@@ -1,4 +1,5 @@
 @extends('layouts.landing')
+@section('title', 'Login')
 
 @section('content')
 <div class="d-flex justify-content-center pt-5">
