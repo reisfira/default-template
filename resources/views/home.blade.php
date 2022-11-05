@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['hide_white_header' => true])
 @section('title', 'Home')
 
 @section('content')
