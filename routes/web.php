@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,30 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::view('welcome', 'welcome')->name('welcome');
 
-Route::get('login', function() {
-    return view('login');
-})->name('login');
+// authentication custom views for fortify authentication
+Route::view('login', 'auth.login')->name('login.view');
+Route::view('register', 'auth.register')->name('register.view');
 
-Route::post('login', function() {
-    return view('login');
-})->name('login.store');
-
-Route::post('logout', function() {
-    return;
-})->name('logout');
-
-Route::get('register', function() {
-    return view('register');
-})->name('register');
-
-Route::post('register', function() {
-    return;
-})->name('register.store');
-
-Route::get('home', function() {
-    return view('home');
-})->name('home');
+Route::get('/', [ HomeController::class, 'index' ])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', [ HomeController::class, 'index' ]);
+});
